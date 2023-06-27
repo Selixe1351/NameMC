@@ -1,0 +1,6 @@
+ip: "play.server.net"
+name: "Server"
+rewards:
+  - "crate givekey %player% Vote 3"
+
+claimed:
