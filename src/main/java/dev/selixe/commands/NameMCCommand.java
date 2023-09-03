@@ -21,12 +21,12 @@ public class NameMCCommand {
         boolean status = Boolean.parseBoolean(scanner.next());
 
         if (NameMC.getInstance().getConfiguration().getConfig().getStringList("claimed").contains(player.getUniqueId().toString())) {
-            player.sendMessage(ColorUtils.translate("&d&l" + NameMC.getInstance().getConfiguration().getConfig().getString("name") + " &7\u239c &cYou have already claimed your rewards."));
+            NameMC.getInstance().getConfiguration().getConfig().getStringList("already-claimed-message").forEach(s -> player.sendMessage(ColorUtils.translate(s)));
             return;
         }
 
         if (status) {
-            player.sendMessage(ColorUtils.translate("&d&l" + NameMC.getInstance().getConfiguration().getConfig().getString("name") + " &7\u239c &aYou've successfully voted on NameMC."));
+            NameMC.getInstance().getConfiguration().getConfig().getStringList("claimed-message").forEach(s -> player.sendMessage(ColorUtils.translate(s)));
             //Bukkit.getOnlinePlayers().forEach(p -> p.sendMessage(ColorUtils.translate("&d&lNameMC &7\u239c &d" + player.getName() + " &fhas voted on &dNameMC &fand received 5x &dVote &fkeys.")));
             for (String rewards : NameMC.getInstance().getConfig().getStringList("rewards")) {
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), rewards.replace("%player%", player.getName()));
@@ -36,13 +36,7 @@ public class NameMCCommand {
             NameMC.getInstance().getConfiguration().getConfig().set("claimed", claimed);
             NameMC.getInstance().getConfiguration().updateConfig();
         } else {
-            player.sendMessage(" ");
-            player.sendMessage(ColorUtils.translate("&d&lNameMC"));
-            player.sendMessage(ColorUtils.translate("&7Vote on the website below to claim your rewards"));
-            player.sendMessage(ColorUtils.translate(" "));
-            player.sendMessage(ColorUtils.translate(" &7\u25b6 &fhttps://namemc.com/server/" + NameMC.getInstance().getConfiguration().getConfig().getString("ip")));
-            player.sendMessage(" ");
-            player.sendMessage(ColorUtils.translate("&7Once you've voted on the website, type /namemc again."));
+            NameMC.getInstance().getConfiguration().getConfig().getStringList("command-message").forEach(s -> player.sendMessage(ColorUtils.translate(s)));
         }
 
         scanner.close();
