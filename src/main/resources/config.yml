@@ -3,4 +3,18 @@ name: "Server"
 rewards:
   - "crate givekey %player% Vote 3"
 
+claimed-message:
+  - "&6&lServer &7\u25b6 &aYou have successfully voted on NameMC."
+
+already-claimed-message:
+  - "&6&lServer &7\u25b6 &cYou have already claimed your rewards."
+
+command-message:
+  - " "
+  - "&6&lNameMC"
+  - "&7Vote on the website below to claim your rewards"
+  - "  &7\u25b6 &fhttps://namemc.com/server/play.server.net"
+  - " "
+  - "&7Once you have voted on the website, type /namemc again."
+
 claimed:
