@@ -8,7 +8,7 @@ Follow these simple steps to install the NameMC Plugin on your Minecraft server:
 
 ### 1. Download the Compiled JAR
 
-Visit the [Release page](link_to_release_page) to download the compiled JAR file for the NameMC Plugin.
+Visit the [Release page](releases) to download the compiled JAR file for the NameMC Plugin.
 
 ### 2. Drag and Drop the JAR File
 
