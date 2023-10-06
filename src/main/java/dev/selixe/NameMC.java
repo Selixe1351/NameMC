@@ -1,28 +1,32 @@
 package dev.selixe;
 
 import dev.selixe.commands.NameMCCommand;
-import dev.swift.config.Config;
-import dev.swift.util.command.CommandHandler;
+import dev.selixe.utils.Configuration;
+import dev.selixe.utils.command.CommandHandler;
 import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
 
+/**
+ * Copyright (c) 2023 Selixe
+ * <p>
+ * Usage or redistribution of source code is permitted only if given
+ * permission from the original author: Selixe
+ */
+
+@Getter
 public class NameMC extends JavaPlugin {
 
     public static NameMC getInstance() {
         return NameMC.getPlugin(NameMC.class);
     }
 
-    @Getter private Config configuration;
+    private Configuration configuration;
 
     @Override
     public void onEnable() {
-        configuration = new Config("config.yml", this);
+        configuration = new Configuration("config.yml", this);
 
         CommandHandler.registerCommands(NameMCCommand.class, this);
     }
 
-    @Override
-    public void onDisable() {
-
-    }
 }

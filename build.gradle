@@ -8,16 +8,21 @@ version '1.0-SNAPSHOT'
 repositories {
     mavenCentral()
     maven {
-        url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+
+        content {
+            includeGroup 'org.bukkit'
+            includeGroup 'org.spigotmc'
+        }
     }
-    flatDir name: "libs" dirs "$projectDir/libs"
+    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url = 'https://oss.sonatype.org/content/repositories/central' }
 }
 
 dependencies {
     implementation 'org.projectlombok:lombok:1.18.26'
     annotationProcessor 'org.projectlombok:lombok:1.18.26'
-    implementation name: 'Server'
-    implementation name: 'Base-1.0'
+    implementation 'org.spigotmc:spigot-api:1.20.1-R0.1-SNAPSHOT'
 }
 
 def targetJavaVersion = 8

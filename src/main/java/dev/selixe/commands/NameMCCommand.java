@@ -1,16 +1,22 @@
 package dev.selixe.commands;
 
 import dev.selixe.NameMC;
-import dev.swift.other.ColorUtils;
-import dev.swift.util.command.Command;
+import dev.selixe.utils.ColorUtils;
+import dev.selixe.utils.command.Command;
 import lombok.SneakyThrows;
 import org.bukkit.Bukkit;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.net.URL;
 import java.util.List;
 import java.util.Scanner;
+
+/**
+ * Copyright (c) 2023 Selixe
+ * <p>
+ * Usage or redistribution of source code is permitted only if given
+ * permission from the original author: Selixe
+ */
 
 public class NameMCCommand {
 
@@ -27,14 +33,14 @@ public class NameMCCommand {
 
         if (status) {
             NameMC.getInstance().getConfiguration().getConfig().getStringList("claimed-message").forEach(s -> player.sendMessage(ColorUtils.translate(s)));
-            //Bukkit.getOnlinePlayers().forEach(p -> p.sendMessage(ColorUtils.translate("&d&lNameMC &7\u239c &d" + player.getName() + " &fhas voted on &dNameMC &fand received 5x &dVote &fkeys.")));
             for (String rewards : NameMC.getInstance().getConfig().getStringList("rewards")) {
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), rewards.replace("%player%", player.getName()));
             }
             List<String> claimed = NameMC.getInstance().getConfiguration().getConfig().getStringList("claimed");
             claimed.add(player.getUniqueId().toString());
             NameMC.getInstance().getConfiguration().getConfig().set("claimed", claimed);
-            NameMC.getInstance().getConfiguration().updateConfig();
+            NameMC.getInstance().getConfiguration().saveConfig();
+            NameMC.getInstance().getConfiguration().reloadConfig();
         } else {
             NameMC.getInstance().getConfiguration().getConfig().getStringList("command-message").forEach(s -> player.sendMessage(ColorUtils.translate(s)));
         }
