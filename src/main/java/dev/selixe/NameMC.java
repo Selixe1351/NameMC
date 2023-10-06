@@ -1,6 +1,9 @@
 package dev.selixe;
 
 import dev.selixe.commands.NameMCCommand;
+import dev.selixe.commands.VoteAddCommand;
+import dev.selixe.commands.VoteCheckCommand;
+import dev.selixe.commands.VoteRemoveCommand;
 import dev.selixe.utils.Configuration;
 import dev.selixe.utils.command.CommandHandler;
 import lombok.Getter;
@@ -27,6 +30,9 @@ public class NameMC extends JavaPlugin {
         configuration = new Configuration("config.yml", this);
 
         CommandHandler.registerCommands(NameMCCommand.class, this);
+        CommandHandler.registerCommands(VoteAddCommand.class, this);
+        CommandHandler.registerCommands(VoteRemoveCommand.class, this);
+        CommandHandler.registerCommands(VoteCheckCommand.class, this);
     }
 
 }

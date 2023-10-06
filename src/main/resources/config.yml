@@ -17,4 +17,11 @@ command-message:
   - " "
   - "&7Once you have voted on the website, type /namemc again."
 
+staff:
+  has-voted: "&a%target% has voted on namemc"
+  has-already-voted: "&c%target% has already voted on namemc"
+  has-not-voted: "&c%target% has not voted on namemc"
+  removed-vote: "&aYou have removed %target%'s vote"
+  added-vote: "&aYou have force voted for %target%"
+
 claimed:
