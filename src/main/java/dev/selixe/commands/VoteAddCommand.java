@@ -8,6 +8,13 @@ import dev.selixe.utils.command.parameter.Param;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+/**
+ * Copyright (c) 2024 Selixe
+ * <p>
+ * Usage or redistribution of source code is permitted only if given
+ * permission from the original author: Selixe
+ */
+
 public class VoteAddCommand {
 
     @Command(names = {"vote add", "forcevote"}, permission = "namemc.staff")

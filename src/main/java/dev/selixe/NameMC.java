@@ -29,10 +29,7 @@ public class NameMC extends JavaPlugin {
     public void onEnable() {
         configuration = new Configuration("config.yml", this);
 
-        CommandHandler.registerCommands(NameMCCommand.class, this);
-        CommandHandler.registerCommands(VoteAddCommand.class, this);
-        CommandHandler.registerCommands(VoteRemoveCommand.class, this);
-        CommandHandler.registerCommands(VoteCheckCommand.class, this);
+        CommandHandler.registerCommands("dev.selixe.commands", this);
     }
 
 }

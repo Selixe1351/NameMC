@@ -8,6 +8,13 @@ import dev.selixe.utils.command.parameter.Param;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 
+/**
+ * Copyright (c) 2024 Selixe
+ * <p>
+ * Usage or redistribution of source code is permitted only if given
+ * permission from the original author: Selixe
+ */
+
 public class VoteRemoveCommand {
 
     @Command(names = {"vote remove"}, permission = "namemc.staff")
