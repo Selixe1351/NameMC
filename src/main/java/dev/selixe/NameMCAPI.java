@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 import java.util.Scanner;
@@ -15,26 +16,25 @@ import java.util.UUID;
 public class NameMCAPI {
 
     /**
-     * Scan a uuid
-     * @param uuid the uuid
-     * @return the scanner
-     */
-    public Scanner scan(UUID uuid) {
-        try {
-            return new Scanner((new URL("https://api.namemc.com/server/" + NameMC.getInstance().getConfiguration().getConfig().getString("ip") + "/likes?profile=" + uuid).openStream()));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /**
      * Check if an uuid can vote
      * @param uuid the uuid
      * @return if the uuid can vote
      */
     public boolean canVote(UUID uuid) {
-        try (Scanner scanner = scan(uuid)) {
+        String urlString = "https://api.namemc.com/server/" + NameMC.getInstance().getConfiguration().getConfig().getString("ip") + "/likes?profile=" + uuid;
+        URL url;
+        try {
+            url = new URL(urlString);
+        } catch (MalformedURLException e) {
+            Bukkit.getLogger().warning("Malformed URL: " + urlString);
+            return false;
+        }
+
+        try (Scanner scanner = new Scanner(url.openStream())) {
             return Boolean.parseBoolean(scanner.next());
+        } catch (IOException e) {
+            Bukkit.getLogger().warning("Failed to open stream for URL: " + urlString);
+            return false;
         }
     }
 
